@@ -32,6 +32,7 @@ namespace JogoDaVelha
             Console.WriteLine("1. Jogar mais uma partida");
             Console.WriteLine("2. Voltar ao Menu Principal\n");
             Console.Write("O que deseja fazer? ");
+            
         }
 
         public static void Main(string[] args)
@@ -71,8 +72,7 @@ namespace JogoDaVelha
                             switch (opcaoMenu2)
                             {
                                 case 1:
-                                    ShowMenu();
-                                    break;
+                                    return;
                                 case 2:
                                     ComeçarJogo();
                                     break;
@@ -132,6 +132,12 @@ namespace JogoDaVelha
             Console.ReadLine();
             Console.Clear();
 
+            ContinuarJogo(jogador1, jogador2);
+
+        }
+
+        private static void ContinuarJogo(string jogador1, string jogador2)
+        {
             CabecalhoJogo();
 
             string[,] matriz = new string[3, 3];
@@ -158,7 +164,7 @@ namespace JogoDaVelha
                 {
                     //Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("| ");
-                   // Console.ResetColor();
+                    // Console.ResetColor();
                     Console.Write($"{matriz[i, j]}");
                     //Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write(" |");
@@ -168,7 +174,7 @@ namespace JogoDaVelha
                 Console.WriteLine();  // colocamos este cw vazio para cada linha lida pular uma em branco para formar o tabuleiro.
                 //Console.ForegroundColor= ConsoleColor.Magenta;
                 Console.WriteLine("|---||---||---|");
-               // Console.ResetColor();
+                // Console.ResetColor();
             }
 
 
@@ -209,19 +215,19 @@ namespace JogoDaVelha
                 {
                     for (int j = 0; j < matriz.GetLength(1); j++)
                     {
-                       // Console.ForegroundColor = ConsoleColor.Magenta;
+                        // Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write("| ");
-                     //   Console.ResetColor();
+                        //   Console.ResetColor();
                         Console.Write($"{matriz[i, j]}");
-                      //  Console.ForegroundColor = ConsoleColor.Magenta;
+                        //  Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write(" |");
-                       // Console.ResetColor();
+                        // Console.ResetColor();
                     }
 
                     Console.WriteLine();
-                   // Console.ForegroundColor = ConsoleColor.Magenta;
+                    // Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("|---||---||---|");
-                   // Console.ResetColor();
+                    // Console.ResetColor();
                 }
 
                 // vitória diagonais
@@ -293,11 +299,11 @@ namespace JogoDaVelha
                 }
 
                 Console.WriteLine();
-                Console.ForegroundColor= ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("Ops, houve um empate!");
                 Console.WriteLine("Ninguém ganhou desta vez.\n");
                 Console.ResetColor();
-                
+
             }
 
             Console.ReadLine();
@@ -308,19 +314,16 @@ namespace JogoDaVelha
             switch (opcaoMenu3)
             {
                 case 1:
-                    ComeçarJogo();
+                    ContinuarJogo(jogador1, jogador2);
                     break;
                 case 2:
-                    ShowMenu();
-                    break;
+                    return;
                 default:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Opção inválida. Por favor, tente outra vez.");
                     Console.ResetColor();
                     break;
             }
-
-
         }
 
         private static void MensagemVitoria(string jogador)
